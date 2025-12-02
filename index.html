@@ -19,33 +19,32 @@
       padding:0;
     }
 
-    /* Scrollbars ausblenden */
+    /* Seite selbst TRANSPARENT, keine eigene Hintergrundfarbe */
     html, body{
       scrollbar-width:none;
-      background:#ffffff !important;        /* rein weiss */
+      background:transparent;
     }
-    html::-webkit-scrollbar, body::-webkit-scrollbar{
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar{
       display:none;
     }
 
-    /* Seite */
     body{
       font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
       color:var(--u-text);
-      padding:60px 0;
-      background:#ffffff !important;
+      padding:40px 0;              /* Abstand oben/unten, zeigt WP-Hintergrund */
+      background:transparent;
     }
 
-    /* PREMIUM SHADOW – wie auf der Karte */
+    /* EINZIGE weiße Kachel mit Schatten */
     .gc-wrapper{
       max-width:1080px;
       width:calc(100% - 40px);
       margin:0 auto;
-
       background:#ffffff;
       border-radius:32px;
 
-      /* Weicher, grosser Bon-Cadeau-Schatten */
+      /* weicher, breiter Schatten */
       box-shadow:
         0 40px 80px rgba(0,0,0,0.15),
         0 20px 40px rgba(0,0,0,0.10),
@@ -105,9 +104,7 @@
       margin:18px 0 6px;
     }
 
-    .gc-section-title span.emoji{
-      font-size:18px;
-    }
+    .gc-section-title span.emoji{ font-size:18px; }
 
     ul.gc-list{
       list-style:none;
@@ -128,7 +125,6 @@
       color:var(--u-accent);
     }
 
-    /* Rechte Spalte (Karte) */
     .gc-visual{
       display:flex;
       align-items:center;
@@ -146,13 +142,11 @@
       padding:18px 20px;
       position:relative;
       overflow:hidden;
-
       box-shadow:
         0 32px 60px rgba(0,0,0,0.35),
         0 16px 32px rgba(0,0,0,0.25);
     }
 
-    /* Shine */
     .gc-card::after{
       content:"";
       position:absolute;
@@ -242,7 +236,6 @@
       font-size:11px;
       opacity:0.92;
     }
-
   </style>
 </head>
 <body>
@@ -300,7 +293,6 @@
             <p class="gc-card-text">
               Pour des cours, ateliers et expériences inspirants.
             </p>
-
             <div class="gc-card-amounts">
               <div class="gc-pill">50 €</div>
               <div class="gc-pill">75 €</div>
@@ -321,3 +313,4 @@
 
 </body>
 </html>
+
