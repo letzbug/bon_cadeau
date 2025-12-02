@@ -19,7 +19,7 @@
       padding:0;
     }
 
-    /* Seite TRANSPARENT, kein Hintergrund */
+    /* Seite TRANSPARENT – Hintergrund kommt von WordPress */
     html, body{
       scrollbar-width:none;
       background:transparent !important;
@@ -29,38 +29,34 @@
       display:none;
     }
 
-    /* mehr Luft oben/unten für Schatten */
     body{
       font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
       color:var(--u-text);
-      padding:80px 0; /* wichtig: Schatten sichtbar machen */
+      padding:70px 0;             /* Luft oben/unten für Schatten */
       background:transparent !important;
     }
 
-    /* Hauptkarte mit Premium-Schatten (wie Bon Cadeau) */
+    /* GROSSE KARTE – weiß, weicher Schatten NACH UNTEN */
     .gc-wrapper{
       max-width:1080px;
       width:calc(100% - 40px);
-      margin:0 auto 40px; /* unten extra Platz */
+      margin:0 auto 50px;
       background:#ffffff;
       border-radius:32px;
 
-      /* großer, weicher Schatten */
-      box-shadow:
-        0 40px 80px rgba(0,0,0,0.15),
-        0 20px 40px rgba(0,0,0,0.10),
-        0 4px 16px rgba(0,0,0,0.06);
+      /* ein klarer, nach unten gerichteter Shadow */
+      box-shadow:0 32px 80px rgba(0,0,0,0.18);
 
       display:grid;
       grid-template-columns:minmax(0,1.5fr) minmax(0,1.2fr);
       gap:32px;
-      padding:48px 56px;
+      padding:40px 52px;
     }
 
     @media (max-width:900px){
       .gc-wrapper{
         grid-template-columns:1fr;
-        padding:32px 24px;
+        padding:28px 22px;
       }
     }
 
@@ -132,7 +128,7 @@
       justify-content:center;
     }
 
-    /* Geschenk-Karte */
+    /* Kleine Geschenk-Karte */
     .gc-card{
       width:100%;
       max-width:360px;
@@ -145,11 +141,10 @@
       overflow:hidden;
 
       box-shadow:
-        0 32px 60px rgba(0,0,0,0.35),
-        0 16px 32px rgba(0,0,0,0.25);
+        0 26px 60px rgba(0,0,0,0.35),
+        0 14px 32px rgba(0,0,0,0.25);
     }
 
-    /* Shine-Effekt */
     .gc-card::after{
       content:"";
       position:absolute;
@@ -276,7 +271,7 @@
         <li>Laissez-le choisir parmi nos nombreuses activités.</li>
       </ul>
 
-      <h2 class="gc-section-title"><span class="emoji">🎁</span>Une idée lumineuse pour :</h2>
+      <h2 class="gc-section-title"><span class="emoji">🎁</span>Une idée lumineuse pour :</span></h2>
       <ul class="gc-list">
         <li>Les fêtes de fin d’année,</li>
         <li>Un anniversaire,</li>
