@@ -19,33 +19,35 @@
       padding:0;
     }
 
-    /* Scrollbar ausblenden, aber Inhalt bleibt notfalls scrollbar */
-    html{
-      scrollbar-width:none;          /* Firefox */
+    /* Scrollbars ausblenden */
+    html, body{
+      scrollbar-width:none;
+      background:#ffffff;       /* <- HINTERGRUND JETZT 100% WEISS */
     }
     html::-webkit-scrollbar,
     body::-webkit-scrollbar{
-      display:none;                  /* Chrome, Edge, etc. */
+      display:none;
     }
 
+    /* Ganze Seite weiß, leichte Luft oben/unten */
     body{
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,sans-serif;
-      background:transparent;        /* kein eigener Hintergrund */
       color:var(--u-text);
-      padding:20px 0;                /* nur etwas Luft oben/unten */
+      padding:40px 0;
+      background:#ffffff !important;   /* <- WEISS ERZWUNGEN */
     }
 
     .gc-wrapper{
       max-width:1080px;
       width:calc(100% - 32px);
       margin:0 auto;
-      background:var(--u-card);      /* weiße Kachel */
+      background:#ffffff;              /* Karte selbst weiß */
       border-radius:24px;
-      box-shadow:0 18px 45px rgba(10,27,58,0.16);
+      box-shadow:0 18px 45px rgba(10,27,58,0.16);  /* sauberer Schatten */
       display:grid;
       grid-template-columns:minmax(0,1.5fr) minmax(0,1.2fr);
       gap:32px;
-      padding:28px 32px;
+      padding:32px 36px;
     }
 
     @media (max-width:900px){
@@ -85,9 +87,7 @@
       margin-bottom:16px;
     }
 
-    .gc-highlight{
-      font-weight:600;
-    }
+    .gc-highlight{ font-weight:600; }
 
     .gc-section-title{
       display:flex;
@@ -95,19 +95,16 @@
       gap:8px;
       font-weight:700;
       color:var(--u-navy);
-      margin:16px 0 6px;
+      margin:18px 0 6px;
     }
 
-    .gc-section-title span.emoji{
-      font-size:18px;
-    }
+    .gc-section-title span.emoji{ font-size:18px; }
 
     ul.gc-list{
       list-style:none;
       padding-left:0;
       margin-bottom:8px;
     }
-
     ul.gc-list li{
       padding-left:18px;
       position:relative;
@@ -115,7 +112,6 @@
       line-height:1.5;
       margin:3px 0;
     }
-
     ul.gc-list li::before{
       content:"•";
       position:absolute;
@@ -123,13 +119,13 @@
       color:var(--u-accent);
     }
 
-    /* VISUELLE KARTE – statisch, mit Shine */
     .gc-visual{
       display:flex;
       align-items:center;
       justify-content:center;
     }
 
+    /* Karte */
     .gc-card{
       width:100%;
       max-width:360px;
@@ -143,7 +139,7 @@
       box-shadow:0 20px 40px rgba(0,0,0,0.35);
     }
 
-    /* Shine-Effekt – komplett über die Karte, alle 5s */
+    /* Shine, oft und vollständig */
     .gc-card::after{
       content:"";
       position:absolute;
@@ -151,24 +147,24 @@
       background:linear-gradient(120deg,
         transparent 0%,
         rgba(255,255,255,0.65) 45%,
-        rgba(255,255,255,0.1) 60%,
+        rgba(255,255,255,0.15) 60%,
         transparent 100%);
-      transform:translateX(-150%);
+      transform:translateX(-160%);
       pointer-events:none;
       mix-blend-mode:screen;
       opacity:0.35;
-      animation:gc-card-shine 5s linear infinite;
+      animation:shine 5s linear infinite;
     }
 
-    @keyframes gc-card-shine{
+    @keyframes shine{
       0%{
-        transform:translateX(-150%) rotate(0.01deg);
+        transform:translateX(-160%);
       }
       35%{
-        transform:translateX(150%) rotate(0.01deg);
+        transform:translateX(160%);
       }
       100%{
-        transform:translateX(150%) rotate(0.01deg);
+        transform:translateX(160%);
       }
     }
 
@@ -192,7 +188,6 @@
       right:20px;
       font-weight:700;
       font-size:16px;
-      letter-spacing:.08em;
       text-transform:uppercase;
     }
 
@@ -213,9 +208,9 @@
 
     .gc-card-text{
       font-size:13px;
-      max-width:230px;
-      margin-top:6px;
       opacity:0.92;
+      margin-top:6px;
+      max-width:230px;
     }
 
     .gc-card-amounts{
@@ -232,7 +227,6 @@
       border:1px solid rgba(248,250,252,0.45);
       font-size:12px;
       font-weight:600;
-      backdrop-filter:blur(3px);
     }
 
     .gc-card-footer{
@@ -242,27 +236,15 @@
       opacity:0.92;
     }
 
-    @media (max-width:600px){
-      .gc-title{
-        font-size:22px;
-      }
-      .gc-card{
-        max-width:320px;
-      }
-    }
   </style>
 </head>
 <body>
+
   <main class="gc-wrapper">
 
     <section>
-      <div class="gc-tag">
-        🎁 Bon cadeau UniPop
-      </div>
-
-      <h1 class="gc-title">
-        Surprenez vos proches avec un cadeau inspirant et durable&nbsp;!
-      </h1>
+      <div class="gc-tag">🎁 Bon cadeau UniPop</div>
+      <h1 class="gc-title">Surprenez vos proches avec un cadeau inspirant et durable&nbsp;!</h1>
 
       <p class="gc-subtitle">
         Optez pour un cadeau festif, stimulant et riche en sens.
@@ -275,41 +257,28 @@
         de vivre des moments enrichissants et de partager des instants hors du commun.
       </p>
 
-      <h2 class="gc-section-title">
-        <span class="emoji">✨</span>
-        <span>Que ce soit pour…</span>
-      </h2>
+      <h2 class="gc-section-title"><span class="emoji">✨</span>Que ce soit pour…</h2>
       <ul class="gc-list">
         <li>Explorer un nouveau hobby,</li>
         <li>Perfectionner une compétence,</li>
         <li>Ou simplement s’offrir un moment de plaisir.</li>
       </ul>
 
-      <h2 class="gc-section-title">
-        <span class="emoji">👉</span>
-        <span>Comment ça marche ?</span>
-      </h2>
+      <h2 class="gc-section-title"><span class="emoji">👉</span>Comment ça marche ?</h2>
       <ul class="gc-list">
         <li>Sélectionnez le montant du bon cadeau.</li>
         <li>Offrez-le à un proche.</li>
         <li>Laissez-le choisir parmi nos nombreuses activités.</li>
       </ul>
 
-      <h2 class="gc-section-title">
-        <span class="emoji">🎁</span>
-        <span>Une idée lumineuse pour :</span>
-      </h2>
+      <h2 class="gc-section-title"><span class="emoji">🎁</span>Une idée lumineuse pour :</h2>
       <ul class="gc-list">
         <li>Les fêtes de fin d’année,</li>
         <li>Un anniversaire,</li>
         <li>Une occasion spéciale.</li>
       </ul>
 
-      <h2 class="gc-section-title">
-        <span class="emoji">🌟</span>
-        <span>Commandez votre bon cadeau UniPop dès maintenant !</span>
-      </h2>
-      <!-- CTA entfernt – WordPress übernimmt die Auswahl -->
+      <h2 class="gc-section-title"><span class="emoji">🌟</span>Commandez votre bon cadeau UniPop dès maintenant !</h2>
     </section>
 
     <aside class="gc-visual">
@@ -320,9 +289,7 @@
         <div class="gc-card-main">
           <div>
             <div class="gc-card-title">Bon cadeau</div>
-            <p class="gc-card-text">
-              Pour des cours, ateliers et expériences inspirants.
-            </p>
+            <p class="gc-card-text">Pour des cours, ateliers et expériences inspirants.</p>
             <div class="gc-card-amounts">
               <div class="gc-pill">50 €</div>
               <div class="gc-pill">75 €</div>
@@ -340,5 +307,6 @@
     </aside>
 
   </main>
+
 </body>
 </html>
