@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Bon cadeau UniPop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root{
+      --u-navy:#0a1b3a;
+      --u-accent:#e60000;
+      --u-soft:#f3f7ff;
+      --u-card:#ffffff;
+      --u-text:#1f2933;
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      min-height:100vh;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,sans-serif;
+      background:radial-gradient(circle at top left,#fdfbff 0,#e7f0ff 40%,#dfe7ff 100%);
+      color:var(--u-text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px 16px;
+    }
+
+    .gc-wrapper{
+      max-width:1080px;
+      width:100%;
+      background:var(--u-card);
+      border-radius:24px;
+      box-shadow:0 18px 45px rgba(10,27,58,0.16);
+      display:grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(0,1.2fr);
+      gap:32px;
+      padding:32px 36px;
+    }
+
+    @media (max-width:900px){
+      .gc-wrapper{
+        grid-template-columns:1fr;
+        padding:24px 20px;
+      }
+    }
+
+    .gc-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:rgba(230,0,0,0.08);
+      color:var(--u-accent);
+      font-size:13px;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:10px;
+    }
+
+    .gc-title{
+      font-size:26px;
+      line-height:1.3;
+      font-weight:700;
+      color:var(--u-navy);
+      margin-bottom:8px;
+    }
+
+    .gc-subtitle{
+      font-size:16px;
+      line-height:1.5;
+      color:#374151;
+      margin-bottom:16px;
+    }
+
+    .gc-highlight{
+      font-weight:600;
+    }
+
+    .gc-section-title{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:700;
+      color:var(--u-navy);
+      margin:18px 0 6px;
+    }
+
+    .gc-section-title span.emoji{
+      font-size:18px;
+    }
+
+    ul.gc-list{
+      list-style:none;
+      margin-left:0;
+      padding-left:0;
+      margin-bottom:8px;
+    }
+
+    ul.gc-list li{
+      position:relative;
+      padding-left:18px;
+      font-size:15px;
+      line-height:1.5;
+      margin:3px 0;
+    }
+    ul.gc-list li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--u-accent);
+    }
+
+    .gc-note{
+      font-size:13px;
+      color:#6b7280;
+      margin-top:10px;
+    }
+
+    /* Colonne visuelle */
+    .gc-visual{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .gc-card{
+      width:100%;
+      max-width:360px;
+      aspect-ratio:16/10;
+      border-radius:22px;
+      background:linear-gradient(135deg,#0a1b3a 0%,#1c2f63 40%,#e60000 115%);
+      color:#f9fafb;
+      padding:18px 20px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    .gc-card-badge{
+      position:absolute;
+      top:16px;
+      left:18px;
+      padding:4px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.4);
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:600;
+      background:rgba(0,0,0,0.2);
+      backdrop-filter:blur(4px);
+    }
+
+    .gc-card-logo{
+      position:absolute;
+      top:16px;
+      right:20px;
+      font-weight:700;
+      font-size:16px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .gc-card-main{
+      position:absolute;
+      inset:52px 22px 22px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .gc-card-title{
+      font-size:22px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .gc-card-text{
+      font-size:13px;
+      margin-top:6px;
+      max-width:230px;
+      opacity:0.92;
+    }
+
+    .gc-card-amounts{
+      display:flex;
+      gap:8px;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+
+    .gc-pill{
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.3);
+      border:1px solid rgba(248,250,252,0.45);
+      font-size:12px;
+      font-weight:600;
+      backdrop-filter:blur(3px);
+    }
+
+    .gc-card-footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      font-size:11px;
+      opacity:0.92;
+    }
+
+    .gc-cta{
+      margin-top:22px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .gc-cta button{
+      border:none;
+      border-radius:999px;
+      padding:10px 18px;
+      font-size:14px;
+      font-weight:600;
+      background:var(--u-accent);
+      color:white;
+      cursor:pointer;
+      box-shadow:0 10px 24px rgba(230,0,0,0.35);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+
+    .gc-cta button:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 32px rgba(230,0,0,0.45);
+      background:#ff1818;
+    }
+
+    .gc-cta span{
+      font-size:13px;
+      color:#4b5563;
+    }
+
+    @media (max-width:600px){
+      .gc-title{
+        font-size:22px;
+      }
+      .gc-card{
+        max-width:320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="gc-wrapper">
+    <!-- Colonne texte -->
+    <section>
+      <div class="gc-tag">
+        <span>🎁 Bon cadeau UniPop</span>
+      </div>
+
+      <h1 class="gc-title">
+        Surprenez vos proches avec un cadeau inspirant et durable&nbsp;!
+      </h1>
+
+      <p class="gc-subtitle">
+        Optez pour un cadeau festif, stimulant et riche en sens.
+        <span class="gc-highlight">Offrez la possibilité de grandir, de s’épanouir et de se plonger</span>
+        dans l’univers de l’apprentissage et de la découverte.
+      </p>
+
+      <p class="gc-subtitle" style="font-size:15px;">
+        Offrir un bon cadeau UniPop, c’est la possibilité d’explorer de nouvelles passions,
+        de vivre des moments enrichissants et de partager des instants hors du commun.
+      </p>
+
+      <h2 class="gc-section-title">
+        <span class="emoji">✨</span>
+        <span>Que ce soit pour…</span>
+      </h2>
+      <ul class="gc-list">
+        <li>Explorer un nouveau hobby,</li>
+        <li>Perfectionner une compétence,</li>
+        <li>Ou simplement s’offrir un moment de plaisir,</li>
+      </ul>
+      <p class="gc-subtitle" style="font-size:14px; margin-top:4px;">
+        …notre programme varié a de quoi séduire tous les âges et toutes les envies.
+      </p>
+
+      <h2 class="gc-section-title">
+        <span class="emoji">👉</span>
+        <span>Comment ça marche&nbsp;?</span>
+      </h2>
+      <ul class="gc-list">
+        <li>Sélectionnez le montant du bon cadeau.</li>
+        <li>Offrez-le à un proche.</li>
+        <li>Laissez-le choisir parmi nos nombreuses activités et cours.</li>
+      </ul>
+
+      <h2 class="gc-section-title">
+        <span class="emoji">🎁</span>
+        <span>Une idée lumineuse pour…</span>
+      </h2>
+      <ul class="gc-list">
+        <li>Les fêtes de fin d’année,</li>
+        <li>Un anniversaire,</li>
+        <li>Une occasion spéciale ou simplement pour faire plaisir.</li>
+      </ul>
+
+      <h2 class="gc-section-title">
+        <span class="emoji">🌟</span>
+        <span>Commandez votre bon cadeau UniPop dès maintenant&nbsp;!</span>
+      </h2>
+      <div class="gc-cta">
+        <button type="button">Demander un bon cadeau</button>
+        <span>(traitement sous 3&nbsp;jours ouvrables)</span>
+      </div>
+
+      <p class="gc-note">
+        Notez s.v.p. que le traitement de ce bon cadeau nécessite un délai de 3 jours ouvrables.
+      </p>
+    </section>
+
+    <!-- Colonne visuelle -->
+    <aside class="gc-visual" aria-hidden="true">
+      <div class="gc-card">
+        <div class="gc-card-badge">Cadeau d’apprentissage</div>
+        <div class="gc-card-logo">UniPop</div>
+
+        <div class="gc-card-main">
+          <div>
+            <div class="gc-card-title">Bon cadeau</div>
+            <p class="gc-card-text">
+              Pour des cours, ateliers et expériences
+              qui donnent envie d’apprendre et de se réinventer.
+            </p>
+            <div class="gc-card-amounts">
+              <div class="gc-pill">50&nbsp;€</div>
+              <div class="gc-pill">75&nbsp;€</div>
+              <div class="gc-pill">100&nbsp;€</div>
+              <div class="gc-pill">Autre montant</div>
+            </div>
+          </div>
+
+          <div class="gc-card-footer">
+            <span>Valable sur l’ensemble du programme UniPop.</span>
+            <span>📍 Luxembourg</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+</body>
+</html>
