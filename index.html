@@ -99,33 +99,26 @@
 
     ul.gc-list{
       list-style:none;
-      margin-left:0;
       padding-left:0;
       margin-bottom:8px;
     }
 
     ul.gc-list li{
-      position:relative;
       padding-left:18px;
+      position:relative;
       font-size:15px;
       line-height:1.5;
       margin:3px 0;
     }
+
     ul.gc-list li::before{
       content:"•";
       position:absolute;
       left:0;
-      top:0;
       color:var(--u-accent);
     }
 
-    .gc-note{
-      font-size:13px;
-      color:#6b7280;
-      margin-top:10px;
-    }
-
-    /* Colonne visuelle */
+    /* VISUELLE KARTE MIT ANIMATION */
     .gc-visual{
       display:flex;
       align-items:center;
@@ -142,7 +135,54 @@
       padding:18px 20px;
       position:relative;
       overflow:hidden;
+      transform-origin:center;
       box-shadow:0 20px 40px rgba(0,0,0,0.35);
+      animation:gc-card-float 6s ease-in-out infinite;
+    }
+
+    /* Schwebe-Animation */
+    @keyframes gc-card-float{
+      0%{
+        transform:translateY(0);
+        box-shadow:0 20px 40px rgba(0,0,0,0.35);
+      }
+      50%{
+        transform:translateY(-6px);
+        box-shadow:0 26px 50px rgba(0,0,0,0.40);
+      }
+      100%{
+        transform:translateY(0);
+        box-shadow:0 20px 40px rgba(0,0,0,0.35);
+      }
+    }
+
+    /* Glanz / Shine über der Karte */
+    .gc-card::after{
+      content:"";
+      position:absolute;
+      inset:-20%;
+      background:linear-gradient(120deg,
+        transparent 0%,
+        rgba(255,255,255,0.65) 45%,
+        rgba(255,255,255,0.1) 60%,
+        transparent 100%);
+      transform:translateX(-130%);
+      pointer-events:none;
+      mix-blend-mode:screen;
+      opacity:0.35;
+      animation:gc-card-shine 8s linear infinite;
+    }
+
+    @keyframes gc-card-shine{
+      0%{
+        transform:translateX(-130%) rotate(0.01deg);
+      }
+      12%{
+        transform:translateX(40%) rotate(0.01deg);
+      }
+      100%{
+        transform:translateX(40%) rotate(0.01deg);
+      }
     }
 
     .gc-card-badge{
@@ -152,11 +192,10 @@
       padding:4px 12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,0.4);
+      background:rgba(0,0,0,0.2);
       font-size:11px;
       text-transform:uppercase;
-      letter-spacing:.12em;
       font-weight:600;
-      background:rgba(0,0,0,0.2);
       backdrop-filter:blur(4px);
     }
 
@@ -187,8 +226,8 @@
 
     .gc-card-text{
       font-size:13px;
-      margin-top:6px;
       max-width:230px;
+      margin-top:6px;
       opacity:0.92;
     }
 
@@ -211,9 +250,7 @@
 
     .gc-card-footer{
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:8px;
       font-size:11px;
       opacity:0.92;
     }
@@ -230,7 +267,7 @@
 </head>
 <body>
   <main class="gc-wrapper">
-    <!-- Colonne texte -->
+
     <section>
       <div class="gc-tag">
         <span>🎁 Bon cadeau UniPop</span>
@@ -258,41 +295,37 @@
       <ul class="gc-list">
         <li>Explorer un nouveau hobby,</li>
         <li>Perfectionner une compétence,</li>
-        <li>Ou simplement s’offrir un moment de plaisir,</li>
+        <li>Ou simplement s’offrir un moment de plaisir.</li>
       </ul>
-      <p class="gc-subtitle" style="font-size:14px; margin-top:4px;">
-        …notre programme varié a de quoi séduire tous les âges et toutes les envies.
-      </p>
 
       <h2 class="gc-section-title">
         <span class="emoji">👉</span>
-        <span>Comment ça marche&nbsp;?</span>
+        <span>Comment ça marche ?</span>
       </h2>
       <ul class="gc-list">
         <li>Sélectionnez le montant du bon cadeau.</li>
         <li>Offrez-le à un proche.</li>
-        <li>Laissez-le choisir parmi nos nombreuses activités et cours.</li>
+        <li>Laissez-le choisir parmi nos nombreuses activités.</li>
       </ul>
 
       <h2 class="gc-section-title">
         <span class="emoji">🎁</span>
-        <span>Une idée lumineuse pour…</span>
+        <span>Une idée lumineuse pour :</span>
       </h2>
       <ul class="gc-list">
         <li>Les fêtes de fin d’année,</li>
         <li>Un anniversaire,</li>
-        <li>Une occasion spéciale ou simplement pour faire plaisir.</li>
+        <li>Une occasion spéciale.</li>
       </ul>
 
       <h2 class="gc-section-title">
         <span class="emoji">🌟</span>
-        <span>Commandez votre bon cadeau UniPop dès maintenant&nbsp;!</span>
+        <span>Commandez votre bon cadeau UniPop dès maintenant !</span>
       </h2>
-      <!-- CTA entfernt – WordPress übernimmt die Bons -->
+      <!-- CTA entfernt – WordPress übernimmt die Auswahl -->
     </section>
 
-    <!-- Colonne visuelle -->
-    <aside class="gc-visual" aria-hidden="true">
+    <aside class="gc-visual">
       <div class="gc-card">
         <div class="gc-card-badge">Cadeau d’apprentissage</div>
         <div class="gc-card-logo">UniPop</div>
@@ -301,24 +334,24 @@
           <div>
             <div class="gc-card-title">Bon cadeau</div>
             <p class="gc-card-text">
-              Pour des cours, ateliers et expériences
-              qui donnent envie d’apprendre et de se réinventer.
+              Pour des cours, ateliers et expériences inspirants.
             </p>
             <div class="gc-card-amounts">
-              <div class="gc-pill">50&nbsp;€</div>
-              <div class="gc-pill">75&nbsp;€</div>
-              <div class="gc-pill">100&nbsp;€</div>
+              <div class="gc-pill">50 €</div>
+              <div class="gc-pill">75 €</div>
+              <div class="gc-pill">100 €</div>
               <div class="gc-pill">Autre montant</div>
             </div>
           </div>
 
           <div class="gc-card-footer">
-            <span>Valable sur l’ensemble du programme UniPop.</span>
+            <span>Valable sur tout le programme.</span>
             <span>📍 Luxembourg</span>
           </div>
         </div>
       </div>
     </aside>
+
   </main>
 </body>
 </html>
