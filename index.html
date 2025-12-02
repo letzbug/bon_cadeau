@@ -19,32 +19,33 @@
       padding:0;
     }
 
-    /* Seite selbst TRANSPARENT, keine eigene Hintergrundfarbe */
+    /* Seite TRANSPARENT, kein Hintergrund */
     html, body{
       scrollbar-width:none;
-      background:transparent;
+      background:transparent !important;
     }
     html::-webkit-scrollbar,
     body::-webkit-scrollbar{
       display:none;
     }
 
+    /* mehr Luft oben/unten für Schatten */
     body{
       font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
       color:var(--u-text);
-      padding:40px 0;              /* Abstand oben/unten, zeigt WP-Hintergrund */
-      background:transparent;
+      padding:80px 0; /* wichtig: Schatten sichtbar machen */
+      background:transparent !important;
     }
 
-    /* EINZIGE weiße Kachel mit Schatten */
+    /* Hauptkarte mit Premium-Schatten (wie Bon Cadeau) */
     .gc-wrapper{
       max-width:1080px;
       width:calc(100% - 40px);
-      margin:0 auto;
+      margin:0 auto 40px; /* unten extra Platz */
       background:#ffffff;
       border-radius:32px;
 
-      /* weicher, breiter Schatten */
+      /* großer, weicher Schatten */
       box-shadow:
         0 40px 80px rgba(0,0,0,0.15),
         0 20px 40px rgba(0,0,0,0.10),
@@ -142,11 +143,13 @@
       padding:18px 20px;
       position:relative;
       overflow:hidden;
+
       box-shadow:
         0 32px 60px rgba(0,0,0,0.35),
         0 16px 32px rgba(0,0,0,0.25);
     }
 
+    /* Shine-Effekt */
     .gc-card::after{
       content:"";
       position:absolute;
@@ -236,6 +239,7 @@
       font-size:11px;
       opacity:0.92;
     }
+
   </style>
 </head>
 <body>
@@ -313,4 +317,3 @@
 
 </body>
 </html>
-
