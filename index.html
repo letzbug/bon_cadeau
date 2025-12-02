@@ -22,38 +22,45 @@
     /* Scrollbars ausblenden */
     html, body{
       scrollbar-width:none;
-      background:#ffffff;       /* <- HINTERGRUND JETZT 100% WEISS */
+      background:#ffffff !important;        /* rein weiss */
     }
-    html::-webkit-scrollbar,
-    body::-webkit-scrollbar{
+    html::-webkit-scrollbar, body::-webkit-scrollbar{
       display:none;
     }
 
-    /* Ganze Seite weiß, leichte Luft oben/unten */
+    /* Seite */
     body{
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,sans-serif;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
       color:var(--u-text);
-      padding:40px 0;
-      background:#ffffff !important;   /* <- WEISS ERZWUNGEN */
+      padding:60px 0;
+      background:#ffffff !important;
     }
 
+    /* PREMIUM SHADOW – wie auf der Karte */
     .gc-wrapper{
       max-width:1080px;
-      width:calc(100% - 32px);
+      width:calc(100% - 40px);
       margin:0 auto;
-      background:#ffffff;              /* Karte selbst weiß */
-      border-radius:24px;
-      box-shadow:0 18px 45px rgba(10,27,58,0.16);  /* sauberer Schatten */
+
+      background:#ffffff;
+      border-radius:32px;
+
+      /* Weicher, grosser Bon-Cadeau-Schatten */
+      box-shadow:
+        0 40px 80px rgba(0,0,0,0.15),
+        0 20px 40px rgba(0,0,0,0.10),
+        0 4px 16px rgba(0,0,0,0.06);
+
       display:grid;
       grid-template-columns:minmax(0,1.5fr) minmax(0,1.2fr);
       gap:32px;
-      padding:32px 36px;
+      padding:48px 56px;
     }
 
     @media (max-width:900px){
       .gc-wrapper{
         grid-template-columns:1fr;
-        padding:24px 20px;
+        padding:32px 24px;
       }
     }
 
@@ -73,7 +80,7 @@
     }
 
     .gc-title{
-      font-size:26px;
+      font-size:28px;
       line-height:1.3;
       font-weight:700;
       color:var(--u-navy);
@@ -98,7 +105,9 @@
       margin:18px 0 6px;
     }
 
-    .gc-section-title span.emoji{ font-size:18px; }
+    .gc-section-title span.emoji{
+      font-size:18px;
+    }
 
     ul.gc-list{
       list-style:none;
@@ -119,13 +128,14 @@
       color:var(--u-accent);
     }
 
+    /* Rechte Spalte (Karte) */
     .gc-visual{
       display:flex;
       align-items:center;
       justify-content:center;
     }
 
-    /* Karte */
+    /* Geschenk-Karte */
     .gc-card{
       width:100%;
       max-width:360px;
@@ -136,10 +146,13 @@
       padding:18px 20px;
       position:relative;
       overflow:hidden;
-      box-shadow:0 20px 40px rgba(0,0,0,0.35);
+
+      box-shadow:
+        0 32px 60px rgba(0,0,0,0.35),
+        0 16px 32px rgba(0,0,0,0.25);
     }
 
-    /* Shine, oft und vollständig */
+    /* Shine */
     .gc-card::after{
       content:"";
       position:absolute;
@@ -152,20 +165,14 @@
       transform:translateX(-160%);
       pointer-events:none;
       mix-blend-mode:screen;
-      opacity:0.35;
+      opacity:0.40;
       animation:shine 5s linear infinite;
     }
 
     @keyframes shine{
-      0%{
-        transform:translateX(-160%);
-      }
-      35%{
-        transform:translateX(160%);
-      }
-      100%{
-        transform:translateX(160%);
-      }
+      0%   { transform:translateX(-160%); }
+      35%  { transform:translateX(160%); }
+      100% { transform:translateX(160%); }
     }
 
     .gc-card-badge{
@@ -208,8 +215,8 @@
 
     .gc-card-text{
       font-size:13px;
-      opacity:0.92;
       margin-top:6px;
+      opacity:0.92;
       max-width:230px;
     }
 
@@ -244,6 +251,7 @@
 
     <section>
       <div class="gc-tag">🎁 Bon cadeau UniPop</div>
+
       <h1 class="gc-title">Surprenez vos proches avec un cadeau inspirant et durable&nbsp;!</h1>
 
       <p class="gc-subtitle">
@@ -284,12 +292,15 @@
     <aside class="gc-visual">
       <div class="gc-card">
         <div class="gc-card-badge">Cadeau d’apprentissage</div>
-        <div class="gc-card-logo">UniPop</div>
+        <div class="gc-card-logo">UNIPOP</div>
 
         <div class="gc-card-main">
           <div>
-            <div class="gc-card-title">Bon cadeau</div>
-            <p class="gc-card-text">Pour des cours, ateliers et expériences inspirants.</p>
+            <div class="gc-card-title">BON CADEAU</div>
+            <p class="gc-card-text">
+              Pour des cours, ateliers et expériences inspirants.
+            </p>
+
             <div class="gc-card-amounts">
               <div class="gc-pill">50 €</div>
               <div class="gc-pill">75 €</div>
