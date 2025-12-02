@@ -138,7 +138,7 @@
       box-shadow:0 20px 40px rgba(0,0,0,0.35);
     }
 
-    /* Shine-Effekt – bleibt */
+    /* Shine-Effekt – jetzt öfter und komplett über die Karte */
     .gc-card::after{
       content:"";
       position:absolute;
@@ -148,22 +148,22 @@
         rgba(255,255,255,0.65) 45%,
         rgba(255,255,255,0.1) 60%,
         transparent 100%);
-      transform:translateX(-130%);
+      transform:translateX(-150%);
       pointer-events:none;
       mix-blend-mode:screen;
       opacity:0.35;
-      animation:gc-card-shine 8s linear infinite;
+      animation:gc-card-shine 5s linear infinite;
     }
 
     @keyframes gc-card-shine{
       0%{
-        transform:translateX(-130%) rotate(0.01deg);
+        transform:translateX(-150%) rotate(0.01deg);
       }
-      12%{
-        transform:translateX(40%) rotate(0.01deg);
+      35%{
+        transform:translateX(150%) rotate(0.01deg);
       }
       100%{
-        transform:translateX(40%) rotate(0.01deg);
+        transform:translateX(150%) rotate(0.01deg);
       }
     }
 
